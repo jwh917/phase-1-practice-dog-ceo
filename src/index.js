@@ -1,4 +1,4 @@
-console.log('%c HI', 'color: firebrick')
+// console.log('%c HI', 'color: firebrick')
 
 const imgUrl = "https://dog.ceo/api/breeds/image/random/4"
 
@@ -53,84 +53,91 @@ function fetchBreed() {
         optionTag.addEventListener('change', (event) => {
             // console.log(optionTag.value)
             
+            ulTag.innerHTML = ""
+
             if(optionTag.value === a){
                 // console.log("you getting somewhere B)")
+                const dogsA = []
 
                 for (const element of breedArray){
                     // console.log(element)
                     // console.log(element[0])
                     if (element[0] === a){
-                        console.log(element)
-                        ulTag.innerHTML = element
-
+                        dogsA.push(element)
+                       
                     }
 
                 }
+            appendBreed(dogsA)
+            blueLi(dogsA)
             }
 
             if(optionTag.value === b){
                 // console.log("you getting somewhere B)")
+                const dogsB = []
 
                 for (const element of breedArray){
                     // console.log(element)
                     // console.log(element[0])
                     if (element[0] === b){
-                        console.log(element)
-                        ulTag.innerHTML = element
-
+                        dogsB.push(element)
                     }
 
                 }
-
+            appendBreed(dogsB)
+            blueLi(dogsB)
             }
 
             if(optionTag.value === c){
                 // console.log("you getting somewhere B)")
+                const dogsC = []
+
                 for (const element of breedArray){
                     // console.log(element)
                     // console.log(element[0])
                     if (element[0] === c){
-                        console.log(element)
-                        ulTag.innerHTML = element
+                        dogsC.push(element)
 
                     }
 
                 }
+            appendBreed(dogsC)
+            blueLi(dogsC)
             }
 
             if(optionTag.value === d){
                 // console.log("you getting somewhere B)")
+                const dogsD = []
 
                 for (const element of breedArray){
                     // console.log(element)
                     // console.log(element[0])
                     if (element[0] === d){
-                        console.log(element)
-                        ulTag.innerHTML = element
+                        dogsD.push(element)
 
                     }
 
                 }
+                appendBreed(dogsD)
+                blueLi(dogsD)
             }
                 
-            // clickedLi.style.color = "blue"
         })
-
-        
-
-        const clickedLi = document.querySelector("li")
-        document.addEventListener('click', (event) => {
-                //console.log(breedElement)
-                //maybe loop then if
-
-            // if(){
-            // }
-            clickedLi.style.color = "blue"
-        })
-            
-
-        }
+    }
 )
+}
+
+function blueLi(lis){
+
+    const clickedLis = [...document.querySelectorAll("li")]
+        //turns all li tags in to a array
+        //maybe loop then if
+            clickedLis.forEach(li => {
+                li.addEventListener('click', (event) =>{
+                    li.style.color = "blue"
+                } )
+            })
+
 }
 
 function appendBreed(dogBreeds) {
@@ -140,8 +147,7 @@ function appendBreed(dogBreeds) {
     const breedsText = document.createTextNode(breeds)
     breedElement.appendChild(breedsText)
     breedsCon.appendChild(breedElement)
-
-
+    blueLi(dogBreeds)
 })
 }
 
@@ -152,10 +158,6 @@ function appendBreed(dogBreeds) {
 document.addEventListener('DOMContentLoaded', (event) => {
     fetchImgs()
     fetchBreed()
+
     })   
     
-   
-
-//problems
-//cant display all breeds
-//help with making specific li change color
